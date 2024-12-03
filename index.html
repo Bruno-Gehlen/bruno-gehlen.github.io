@@ -486,7 +486,14 @@
   </div>
     
     <!-- JS Files -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMvOrcPp7YxZstWno2rXrv0IZ5YWNXRBU&callback=initMap" async defer></script>
+  <script src="assets/js/config.js"></script>
+  <script>
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&callback=initMap`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  </script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
