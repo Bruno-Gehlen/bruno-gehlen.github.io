@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bruno Gehlen - Mathematics MSc · Geometric Analysis</title>
+<meta name="description" content="Graduate student in Mathematics at the University of São Paulo, working at the intersection of geometry, analysis, and code. Research on the Yamabe problem; fullstack and AI development.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0f0c'/%3E%3Crect x='7' y='7' width='18' height='18' fill='%234ade80'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<div id="root" style="min-height:100vh">
+
+<nav style="position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--color-bg) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:2px solid var(--color-divider)">
+ <div class="container" style="display:flex;align-items:center;gap:24px;height:72px">
+  <a href="#header" style="display:flex;align-items:center;gap:11px;margin-right:auto;color:var(--color-text)">
+   <span style="width:18px;height:18px;background:var(--color-accent);display:inline-block"></span>
+   <span style="font-family:var(--font-heading);font-weight:800;font-size:18px;letter-spacing:-.01em">Bruno Gehlen</span>
+  </a>
+  <div class="nav-links">
+   <a href="#about" data-navlink data-pt="Sobre" style="color:var(--color-text);font-size:14px;font-weight:600;letter-spacing:.01em">About</a>
+   <a href="#interests" data-navlink data-pt="Interesses" style="color:var(--color-text);font-size:14px;font-weight:600">Intersts</a>
+   <a href="#resume" data-navlink data-pt="Currículo" style="color:var(--color-text);font-size:14px;font-weight:600">Resume</a>
+   <a href="#projects" data-navlink data-pt="Projetos" style="color:var(--color-text);font-size:14px;font-weight:600">Projects</a>
+   <a href="#resources" data-navlink data-pt="Recursos" style="color:var(--color-text);font-size:14px;font-weight:600">Resources</a>
+   <a href="#contact" data-navlink data-pt="Contato" style="color:var(--color-text);font-size:14px;font-weight:600">Contact</a>
+   <div style="display:inline-flex;border:1px solid var(--color-divider)">
+    <button data-lang="en" style="background:none;border:0;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:12px;color:var(--color-text);padding:7px 11px">EN</button>
+    <button data-lang="pt" style="background:none;border:0;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:12px;color:var(--color-text);padding:7px 11px;border-left:1px solid var(--color-divider)">PT</button>
+   </div>
+  </div>
+  <button class="nav-toggle" data-menu-toggle aria-label="Menu" aria-expanded="false">
+   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+  </button>
+ </div>
+</nav>
+
+<header id="header" class="hero-pad" style="position:relative;overflow:hidden">
+ <div data-geo style="position:absolute;top:50%;right:-140px;transform:translateY(-50%);width:640px;height:640px;opacity:.14;pointer-events:none">
+  <svg viewBox="0 0 200 200" width="640" height="640" style="animation:rot 60s linear infinite;transform-origin:center" aria-hidden="true">
+   <g fill="none" stroke="#3ecf8e" stroke-width="0.5">
+    <circle cx="100" cy="100" r="92"/>
+    <ellipse cx="100" cy="100" rx="92" ry="30"/><ellipse cx="100" cy="100" rx="92" ry="58"/><ellipse cx="100" cy="100" rx="92" ry="82"/>
+    <ellipse cx="100" cy="100" rx="30" ry="92"/><ellipse cx="100" cy="100" rx="58" ry="92"/><ellipse cx="100" cy="100" rx="82" ry="92"/>
+    <line x1="8" y1="100" x2="192" y2="100"/><line x1="100" y1="8" x2="100" y2="192"/>
+   </g>
+  </svg>
+ </div>
+ <div class="container" style="position:relative">
+  <div class="hero-grid">
+   <div>
+    <div data-reveal style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px">
+     <span class="tag tag-accent" style="font-weight:600" data-pt="Mestrando · Análise Geométrica">Mathematics MSc · Geometric Analysis</span>
+     <span class="tag" style="border:1px solid var(--color-divider);color:var(--muted)" data-pt="Desenvolvedor Fullstack + IA">Fullstack + AI Developer</span>
+     <span class="tag" style="border:1px solid var(--color-divider);color:var(--muted)" data-pt="Web Design">Web Design</span>
+    </div>
+    <h1 class="hero-name" data-reveal style="font-size:78px;line-height:.98;letter-spacing:-.03em;margin:0 0 24px">Bruno<br>Gehlen</h1>
+    <p data-reveal style="font-size:19px;line-height:1.5;max-width:33ch;color:var(--color-text);margin:0 0 18px" data-pt="Estudante de mestrado em Matemática na Universidade de São Paulo, trabalhando no encontro entre geometria, análise e código.">Graduate student in Mathematics at the University of São Paulo - working at the intersection of geometry, analysis, and code.</p>
+    <p data-reveal style="font-size:15px;line-height:1.65;max-width:44ch;color:var(--muted);margin:0 0 34px" data-pt="Estudo o problema de Yamabe - curvatura escalar constante de métricas conformes em variedades Riemannianas - onde EDPs não lineares encontram a geometria diferencial. Em paralelo, construo software fullstack e movido a IA.">I study the Yamabe problem - constant scalar curvature of conformal metrics on Riemannian manifolds - where nonlinear PDEs meet differential geometry. Alongside research, I build fullstack and AI-driven software.</p>
+    <div data-reveal style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+     <a class="btn btn-primary" href="http://lattes.cnpq.br/2794653740713400" target="_blank" rel="noopener" style="padding:12px 18px;gap:8px;" data-pt="CV Lattes">CV Lattes
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+     <a class="btn btn-secondary" href="https://github.com/Bruno-Gehlen/" target="_blank" rel="noopener" style="padding:12px 18px;gap:8px">GitHub
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.8.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3s1.7.1 2.5.3c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.3 6.8-9.8C22 6.6 17.5 2 12 2z"/></svg></a>
+     <a class="btn btn-ghost" href="#contact" style="padding:12px 6px" data-pt="Fale comigo">Get in touch →</a>
+    </div>
+   </div>
+   <div data-reveal style="position:relative;justify-self:center">
+    <div style="position:absolute;inset:0;transform:translate(18px,18px);border:2px solid var(--color-accent);z-index:0"></div>
+    <div style="position:relative;z-index:1;width:min(360px,80vw);aspect-ratio:4/5;overflow:hidden;background:var(--color-surface)">
+     <img class="grayscale" src="assets/img/memyself.jpg" alt="Bruno Gehlen" style="width:100%;height:100%;object-fit:cover">
+     <div style="position:absolute;inset:0;background:var(--color-accent);mix-blend-mode:soft-light;opacity:.4"></div>
+     <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,15,12,.7))"></div>
+    </div>
+    <div style="position:relative;z-index:1;margin-top:14px;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">
+     <span style="background-color: var(--color-accent);padding:4px 8px;color:var(--color-surface)" data-pt="São Paulo, Brasil">São Paulo, Brazil</span><span style="background-color: var(--color-accent);padding:4px 8px;color:var(--color-surface)">IME · USP</span>
+    </div>
+   </div>
+  </div>
+ </div>
+</header>
+
+<section id="about" class="section section-pad">
+ <div class="container">
+  <div style="display:flex;align-items:center;gap:22px;margin:0 0 48px">
+   <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.16em;color:var(--color-accent)"><span data-pt="SOBRE">ABOUT</span></span>
+   <span style="flex:1;height:2px;background:var(--color-divider)"></span>
+  </div>
+  <div class="about-grid">
+   <div data-reveal>
+    <h2 style="font-size:36px;line-height:1.08;margin:0 0 22px" data-pt="Geometria, análise e a estrutura das coisas.">Geometry, analysis, and the structure of things.</h2>
+    <p style="font-size:16px;line-height:1.7;color:var(--color-text);max-width:56ch" data-pt="Atualmente me especializo em análise geométrica. Minha pesquisa foca no problema de Yamabe, que busca curvatura escalar constante de métricas conformes em variedades Riemannianas, unindo EDPs não lineares e geometria diferencial.">Currently, I am specializing in geometric analysis. My research focuses on the Yamabe problem - which seeks constant scalar curvature of conformal metrics on Riemannian manifolds - blending nonlinear PDEs and differential geometry.</p>
+    <p style="font-size:16px;line-height:1.7;color:var(--muted);max-width:56ch" data-pt="Sou apaixonado por explorar a relação entre geometria, análise e topologia, além de suas possíveis aplicações na física - e tentar criar ferramentas e softwares para deep learning.">I'm deeply passionate about the interplay between geometry, analysis, and topology - and its applications in physics - as well as developing tools and software for deep learning.</p>
+    <div style="margin-top:36px">
+     <h6 style="color:var(--muted);margin:0 0 16px" data-pt="Linguagens &amp; Ferramentas">Languages &amp; Tools</h6>
+     <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <span class="tag tag-accent" style="font-weight:600">Python · LangChain · Data Science</span>
+      <span class="tag tag-accent" style="font-weight:600">Node.js · React · TailWind CSS</span>
+      <span class="tag tag-accent" style="font-weight:600">Docker · PostgreSQL · Git · RESTful</span>
+      <span class="tag tag-accent" style="font-weight:600">LaTeX · Wolfram Mathematica</span>
+     </div>
+    </div>
+   </div>
+   <div data-reveal>
+    <div style="border:1px solid var(--color-divider);background:var(--color-surface)">
+     <div style="padding:22px 24px;border-bottom:1px solid var(--color-divider)">
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px" data-pt="Cidade natal">Hometown :)</div>
+      <div style="font-size:16px;font-weight:600">Conceição do Coité, Brazil</div>
+     </div>
+     <div style="padding:22px 24px;border-bottom:1px solid var(--color-divider)">
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px" data-pt="Idiomas">Languages</div>
+      <div style="font-size:16px;font-weight:600" data-pt="Português, Inglês, Francês">Portuguese, English, French</div>
+     </div>
+     <div style="padding:22px 24px">
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px" data-pt="Interesses de pesquisa">Research Interests</div>
+      <div style="font-size:16px;font-weight:600" data-pt="Análise Geométrica, Deep Learning">Geometric Analysis, Deep Learning</div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="interests" class="section section-pad">
+ <div class="container">
+  <div style="display:flex;align-items:center;gap:22px;margin:0 0 48px">
+   <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.16em;color:var(--color-accent)"><span data-pt="INTERESSES">INTERESTS</span></span>
+   <span style="flex:1;height:2px;background:var(--color-divider)"></span>
+  </div>
+  <h2 data-reveal style="font-size:36px;max-width:20ch;margin:0 0 44px;line-height:1.08" data-pt="Curiosidades que alimentam a pesquisa.">The curiosities that feed the research.</h2>
+  <div class="int-grid" data-reveal>
+   <div style="background:var(--color-bg);padding:34px 32px">
+    <!-- <div style="font-size:13px;color:var(--color-accent);font-weight:800;margin-bottom:12px">01</div> -->
+    <h4 style="font-size:21px;margin:0 0 10px" data-pt="Design de Interfaces">UI Design</h4>
+    <p style="font-size:14px;line-height:1.65;color:var(--muted);margin:0" data-pt="Projetar interfaces que maximizam usabilidade e experiência - da arquitetura da informação ao último pixel.">Designing interfaces that maximize usability and experience - from information architecture down to the last pixel.</p>
+   </div>
+   <div style="background:var(--color-bg);padding:34px 32px">
+    <!-- <div style="font-size:13px;color:var(--color-accent);font-weight:800;margin-bottom:12px">02</div> -->
+    <h4 style="font-size:21px;margin:0 0 10px" data-pt="Programação">Programming</h4>
+    <p style="font-size:14px;line-height:1.65;color:var(--muted);margin:0" data-pt="Compor algoritmos e código limpo em várias linguagens para transformar ideias em sistemas que funcionam.">Composing algorithms and clean code across languages to turn ideas into systems that actually work.</p>
+   </div>
+   <div style="background:var(--color-bg);padding:34px 32px">
+    <!-- <div style="font-size:13px;color:var(--color-accent);font-weight:800;margin-bottom:12px">03</div> -->
+    <h4 style="font-size:21px;margin:0 0 10px" data-pt="Tecnologia">Technology</h4>
+    <p style="font-size:14px;line-height:1.65;color:var(--muted);margin:0" data-pt="Aplicar conhecimento conceitual para construir ferramentas reprodutíveis, do software ao tangível.">Applying conceptual knowledge to build reproducible tools - from software to the tangible.</p>
+   </div>
+   <div style="background:var(--color-bg);padding:34px 32px">
+    <!-- <div style="font-size:13px;color:var(--color-accent);font-weight:800;margin-bottom:12px">04</div> -->
+    <h4 style="font-size:21px;margin:0 0 10px" data-pt="Filosofia">Philosophy</h4>
+    <p style="font-size:14px;line-height:1.65;color:var(--muted);margin:0" data-pt="Uma investigação crítica sobre existência, razão e conhecimento - as questões que precedem a matemática.">A critical inquiry into existence, reason and knowledge - the questions that precede the math.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="resume" class="section section-pad">
+ <div class="container">
+  <div style="display:flex;align-items:center;gap:22px;margin:0 0 48px">
+   <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.16em;color:var(--color-accent)"><span data-pt="CURRÍCULO">RESUME</span></span>
+   <span style="flex:1;height:2px;background:var(--color-divider)"></span>
+  </div>
+  <div class="two-col">
+   <div data-reveal>
+    <h3 style="font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 28px" data-pt="Formação">Education</h3>
+    <div style="border-left:2px solid var(--color-divider);padding-left:26px;display:flex;flex-direction:column;gap:32px">
+     <div style="position:relative">
+      <span style="position:absolute;left:-33px;top:4px;width:12px;height:12px;background:var(--color-accent)"></span>
+      <div style="font-size:12px;letter-spacing:.06em;color:var(--color-accent);font-weight:800;margin-bottom:6px">2025 - <span data-pt="Presente">Present</span></div>
+      <h4 style="font-size:20px;margin:0 0 6px" data-pt="Mestrado em Matemática">Master of Science in Mathematics</h4>
+      <p style="font-size:14px;color:var(--color-text);margin:0 0 6px;line-height:1.55" data-pt="Classificação de soluções do problema de Yamabe singular e sua relação com instantons gravitacionais">Classification of solutions to the singular Yamabe problem and their relation to gravitational instantons</p>
+      <p style="font-size:13px;color:var(--muted);margin:0;font-style:italic">IME-USP, University of São Paulo, Brazil</p>
+     </div>
+     <div style="position:relative">
+      <span style="position:absolute;left:-33px;top:4px;width:12px;height:12px;background:var(--color-divider)"></span>
+      <div style="font-size:12px;letter-spacing:.06em;color:var(--muted);font-weight:800;margin-bottom:6px">2021 - 2024</div>
+      <h4 style="font-size:20px;margin:0 0 6px" data-pt="Bacharelado em Física">Bachelor of Science in Physics</h4>
+      <p style="font-size:13px;color:var(--muted);margin:0;font-style:italic">IF-USP, University of São Paulo, Brazil</p>
+     </div>
+    </div>
+   </div>
+   <div data-reveal>
+    <h3 style="font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 28px" data-pt="Experiência">Professional Experience</h3>
+    <div style="border-left:2px solid var(--color-divider);padding-left:26px;display:flex;flex-direction:column;gap:32px">
+     <div style="position:relative">
+      <span style="position:absolute;left:-33px;top:4px;width:12px;height:12px;background:var(--color-divider)"></span>
+      <div style="font-size:12px;letter-spacing:.06em;color:var(--muted);font-weight:800;margin-bottom:6px">2024</div>
+      <h4 style="font-size:20px;margin:0 0 6px" data-pt="Iniciação Científica">Scientific Research</h4>
+      <p style="font-size:14px;color:var(--color-text);margin:0 0 6px;line-height:1.55" data-pt="Demonstrações em Mathematica numa introdução à Teoria Quântica de Campos e Física de Partículas">Mathematica demonstrations in an introduction to Quantum Field Theory and Particle Physics</p>
+      <p style="font-size:13px;color:var(--muted);margin:0;font-style:italic">IFT, São Paulo State University, Brazil</p>
+     </div>
+     <div style="position:relative">
+      <span style="position:absolute;left:-33px;top:4px;width:12px;height:12px;background:var(--color-divider)"></span>
+      <div style="font-size:12px;letter-spacing:.06em;color:var(--muted);font-weight:800;margin-bottom:6px">2023 - 2024</div>
+      <h4 style="font-size:20px;margin:0 0 6px" data-pt="Iniciação Científica">Scientific Research</h4>
+      <p style="font-size:14px;color:var(--color-text);margin:0 0 6px;line-height:1.55" data-pt="Estudo da produção de hádrons a partir de modelos térmicos em colisões de íons pesados relativísticos">Study of Hadron Production from Thermal Models in collisions between relativistic heavy ions</p>
+      <p style="font-size:13px;color:var(--muted);margin:0;font-style:italic">IF-USP, University of São Paulo, Brazil</p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- <div data-reveal style="margin-top:52px;border-top:1px solid var(--color-divider);padding-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between">
+   <p style="margin:0;font-size:15px;color:var(--muted)" data-pt="O currículo completo está disponível em PDF.">The full CV is available as a PDF.</p>
+   <a class="btn btn-primary" href="assets/files/ResumeCV-BrunoGehlen.pdf" target="_blank" rel="noopener" style="padding:11px 18px;gap:8px" data-pt="Ver currículo (PDF)">View Résumé (PDF)
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+  </div> -->
+ </div>
+</section>
+
+<section id="projects" class="section section-pad">
+ <div class="container">
+  <div style="display:flex;align-items:center;gap:22px;margin:0 0 40px">
+   <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.16em;color:var(--color-accent)"><span data-pt="PROJETOS">PROJECTS</span></span>
+   <span style="flex:1;height:2px;background:var(--color-divider)"></span>
+  </div>
+  <div data-reveal style="display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center;margin:0 0 40px">
+   <button data-filter="all" style="background:none;border:0;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:14px;padding:6px 0 8px;color:var(--color-text)" data-pt="Todos">All</button>
+   <button data-filter="docs" style="background:none;border:0;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:14px;padding:6px 0 8px;color:var(--color-text)">Docs</button>
+   <button data-filter="courses" style="background:none;border:0;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:14px;padding:6px 0 8px;color:var(--color-text)" data-pt="Cursos">Courses</button>
+   <button data-filter="code" style="background:none;border:0;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:14px;padding:6px 0 8px;color:var(--color-text)" data-pt="Código">Code</button>
+  </div>
+  <div class="proj-grid" data-reveal>
+   <a data-proj data-cat="docs" href="projects/book-template.html" style="display:flex;flex-direction:column;border:1px solid var(--color-divider);background:var(--color-surface);color:var(--color-text);transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='var(--color-accent)'" onmouseout="this.style.transform='none';this.style.borderColor='var(--color-divider)'">
+    <div style="aspect-ratio:16/10;overflow:hidden;background:var(--color-bg)"><img data-cover data-hide-on-error class="grayscale" src="assets/img/book-template.png" alt="Book Template" style="object-position:center"></div>
+    <div style="padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1">
+     <div style="display:flex;justify-content:space-between;align-items:center"><span class="tag tag-accent" style="font-weight:600">LaTeX</span><span style="font-size:11px;color:var(--muted);letter-spacing:.08em">DOCS · W.I.P</span></div>
+     <h4 style="font-size:20px;margin:2px 0 0">Book Template</h4>
+     <p style="font-size:13px;color:var(--muted);margin:0;flex:1" data-pt="Um template de livro em LaTeX.">A reusable LaTeX book template.</p>
+     <span style="font-size:13px;color:var(--color-accent);font-weight:600;margin-top:4px" data-pt="Detalhes →">Details →</span>
+    </div>
+   </a>
+   <a data-proj data-cat="courses" href="projects/statistical-mechanics.html" style="display:flex;flex-direction:column;border:1px solid var(--color-divider);background:var(--color-surface);color:var(--color-text);transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='var(--color-accent)'" onmouseout="this.style.transform='none';this.style.borderColor='var(--color-divider)'">
+    <div style="aspect-ratio:16/10;overflow:hidden;background:var(--color-bg)"><img data-cover data-hide-on-error class="grayscale" src="assets/img/statistical-mechanics.png" alt="Statistical Mechanics" style="object-position:left center"></div>
+    <div style="padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1">
+     <div style="display:flex;justify-content:space-between;align-items:center"><span class="tag tag-accent" style="font-weight:600">Notes</span><span style="font-size:11px;color:var(--muted);letter-spacing:.08em">COURSE · 2022</span></div>
+     <h4 style="font-size:20px;margin:2px 0 0">Statistical Mechanics</h4>
+     <p style="font-size:13px;color:var(--muted);margin:0;flex:1" data-pt="Notas do curso de S. R. Salinas - ponte entre o micro e o macroscópico.">Course notes from S. R. Salinas - bridging microscopic and macroscopic phenomena.</p>
+     <span style="font-size:13px;color:var(--color-accent);font-weight:600;margin-top:4px" data-pt="Detalhes →">Details →</span>
+    </div>
+   </a>
+   <a data-proj data-cat="code" href="projects/polka-dot-game.html" style="display:flex;flex-direction:column;border:1px solid var(--color-divider);background:var(--color-surface);color:var(--color-text);transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s" onmouseover="this.style.transform='translateY(-6px)';this.style.borderColor='var(--color-accent)'" onmouseout="this.style.transform='none';this.style.borderColor='var(--color-divider)'">
+    <div style="aspect-ratio:16/10;overflow:hidden;background:var(--color-bg)"><img data-cover data-hide-on-error class="grayscale" src="assets/img/polka-dot-game.png" alt="Polka Dot Game" style="object-position:left center"></div>
+    <div style="padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1">
+     <div style="display:flex;justify-content:space-between;align-items:center"><span class="tag tag-accent" style="font-weight:600">Mathematica</span><span style="font-size:11px;color:var(--muted);letter-spacing:.08em">CODE · W.I.P</span></div>
+     <h4 style="font-size:20px;margin:2px 0 0">Polka Dot Game</h4>
+     <p style="font-size:13px;color:var(--muted);margin:0;flex:1" data-pt="Um jogo interativo construído em Wolfram Mathematica.">An interactive game built in Wolfram Mathematica.</p>
+     <span style="font-size:13px;color:var(--color-accent);font-weight:600;margin-top:4px" data-pt="Detalhes →">Details →</span>
+    </div>
+   </a>
+  </div>
+  <div data-reveal style="margin-top:60px;border:1px solid var(--color-divider);background:var(--color-surface);padding:34px 34px;display:flex;flex-wrap:wrap;gap:34px;align-items:center;justify-content:space-between">
+   <div style="flex:1;min-width:300px;display:flex;flex-direction:column;gap:20px">
+    <div>
+     <h4 style="font-size:20px;margin:0 0 8px" data-pt="Atividade no GitHub">GitHub Activity</h4>
+     <p style="font-size:14px;color:var(--muted);margin:0" data-pt="Contribuições e código aberto - sempre construindo algo.">Contributions and open-source - always building something.</p>
+     <a class="btn btn-ghost" href="https://github.com/Bruno-Gehlen/" target="_blank" rel="noopener" style="padding:8px 0;margin-top:8px;font-size:14px">github.com/Bruno-Gehlen →</a>
+    </div>
+    <!-- Populated from the GitHub API by site.js. Hidden until it has real data,
+         so a rate-limited or offline visitor never sees placeholder numbers. -->
+    <div data-gh hidden style="max-width:480px;width:100%">
+     <div class="gh-stats">
+      <div class="gh-stat"><div class="gh-stat-num" data-gh-repo-count>—</div><div class="gh-stat-key" data-pt="Repositórios">Repos</div></div>
+      <div class="gh-stat"><div class="gh-stat-num" data-gh-stars>—</div><div class="gh-stat-key" data-pt="Estrelas">Stars</div></div>
+      <div class="gh-stat"><div class="gh-stat-num" data-gh-followers>—</div><div class="gh-stat-key" data-pt="Seguidores">Followers</div></div>
+     </div>
+     <h6 style="color:var(--muted);margin:22px 0 2px" data-pt="Atualizados recentemente">Recently updated</h6>
+     <div class="gh-repos" data-gh-list></div>
+    </div>
+   </div>
+   <img src="assets/img/contrbGithub.webp" alt="GitHub contributions" style="max-width:520px;width:100%;border:1px solid var(--color-divider)">
+  </div>
+ </div>
+</section>
+
+<section id="resources" class="section section-pad">
+ <div class="container">
+  <div style="display:flex;align-items:center;gap:22px;margin:0 0 48px">
+   <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.16em;color:var(--color-accent)"><span data-pt="RECURSOS">RESOURCES</span></span>
+   <span style="flex:1;height:2px;background:var(--color-divider)"></span>
+  </div>
+  <div class="res-grid">
+   <div data-reveal>
+    <h3 style="font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 24px" data-pt="Sites de professores">Teacher Websites</h3>
+    <div style="display:flex;flex-direction:column">
+     <a href="https://denebola.if.usp.br/~jbarata/Notas_de_aula/capitulos.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid var(--color-divider);color:var(--color-text)" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text)'">
+      <span style="font-size:12px;color:var(--color-accent);font-weight:800;width:26px">BR</span>
+      <span style="flex:1"><span style="display:block;font-size:16px;font-weight:600">João C. A. Barata</span><span style="font-size:13px;color:var(--muted)">Notas para um Curso de Física-Matemática</span></span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+     </a>
+     <a href="http://www.damtp.cam.ac.uk/user/tong/teaching.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid var(--color-divider);color:var(--color-text)" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text)'">
+      <span style="font-size:12px;color:var(--color-accent);font-weight:800;width:26px">UK</span>
+      <span style="flex:1"><span style="display:block;font-size:16px;font-weight:600">David Tong</span><span style="font-size:13px;color:var(--muted)">Lectures on Theoretical Physics</span></span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+     </a>
+     <a href="https://www.damtp.cam.ac.uk/user/dbs26/teaching.html" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);color:var(--color-text)" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text)'">
+      <span style="font-size:12px;color:var(--color-accent);font-weight:800;width:26px">UK</span>
+      <span style="flex:1"><span style="display:block;font-size:16px;font-weight:600">David Skinner</span><span style="font-size:13px;color:var(--muted)">Lectures on Theoretical Physics</span></span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+     </a>
+    </div>
+   </div>
+   <div data-reveal>
+    <h3 style="font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 24px" data-pt="Drives">Drives</h3>
+    <a href="https://drive.google.com/drive/folders/0B7EVqWlQNnwscEU0N1VUX1dXTTA?resourcekey=0-ToKHmpdZkEoMj2jLoq7v7w" target="_blank" rel="noopener" style="display:block;border:1px solid var(--color-divider);background:var(--color-surface);padding:28px;color:var(--color-text);transition:border-color .3s" onmouseover="this.style.borderColor='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-divider)'">
+     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+      <div>
+       <span class="tag tag-accent" style="font-weight:600">CEFISMA</span>
+       <h4 style="font-size:19px;margin:14px 0 6px">Old Tests Database - IFUSP</h4>
+       <p style="font-size:13px;color:var(--muted);margin:0" data-pt="Uma coleção de provas antigas do IFUSP.">A shared collection of past exams from IFUSP.</p>
+      </div>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+     </div>
+    </a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="contact" class="section section-pad">
+ <div class="container">
+  <div style="display:flex;align-items:center;gap:22px;margin:0 0 48px">
+   <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.16em;color:var(--color-accent)"><span data-pt="CONTATO">CONTACT</span></span>
+   <span style="flex:1;height:2px;background:var(--color-divider)"></span>
+  </div>
+  <h2 data-reveal style="font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:-.02em;margin:0 0 40px;max-width:16ch" data-pt="Vamos construir algo juntos.">Let's build something together.</h2>
+  <div class="contact-grid" data-reveal>
+   <a href="mailto:brunogehlen@ime.usp.br" style="background:var(--color-bg);padding:30px 32px;color:var(--color-text)" onmouseover="this.style.background='var(--color-surface)'" onmouseout="this.style.background='var(--color-bg)'">
+    <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin-bottom:10px" data-pt="Escreva"><b>Email</b></div>
+    <div style="font-size:19px;font-weight:600;word-break:break-all">brunogehlen@ime.usp.br</div>
+   </a>
+   <div style="background:var(--color-bg);padding:30px 32px">
+    <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin-bottom:10px" data-pt="Endereço"><b>Address</b></div>
+    <div style="font-size:16px;line-height:1.5;color:var(--color-text)">R. do Matão, 1010 - Butantã<br>São Paulo - SP, 05508-090</div>
+   </div>
+   <div id="ime-map" style="grid-column:1 / -1;height:380px;background:var(--color-surface)"></div>
+  </div>
+ </div>
+</section>
+
+<footer style="border-top:2px solid var(--color-divider)">
+ <div class="container" style="padding:36px 0;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+  <div style="display:flex;align-items:center;gap:11px">
+   <span style="width:14px;height:14px;background:var(--color-accent);display:inline-block"></span>
+   <span style="font-family:var(--font-heading);font-weight:800;font-size:15px">Bruno Gehlen</span>
+   <span style="font-size:13px;color:var(--muted);margin-left:8px">© 2026</span>
+  </div>
+  <a href="#header" style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:7px" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--muted)'" data-pt="Voltar ao topo ↑">Back to top ↑</a>
+ </div>
+</footer>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

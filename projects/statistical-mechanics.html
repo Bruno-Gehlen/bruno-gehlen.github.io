@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statistical Mechanics - Bruno Gehlen</title>
+<meta name="description" content="Solved exercise lists from Silvio Salinas' Statistical Mechanics course at IF-USP, taught in 2022.2.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0f0c'/%3E%3Crect x='7' y='7' width='18' height='18' fill='%234ade80'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<div id="root" style="min-height:100vh">
+
+<nav style="position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--color-bg) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:2px solid var(--color-divider)">
+ <div class="container" style="display:flex;align-items:center;gap:24px;height:72px">
+  <a href="../index.html" style="display:flex;align-items:center;gap:11px;margin-right:auto;color:var(--color-text)">
+   <span style="width:18px;height:18px;background:var(--color-accent);display:inline-block"></span>
+   <span style="font-family:var(--font-heading);font-weight:800;font-size:18px;letter-spacing:-.01em">Bruno Gehlen</span>
+  </a>
+  <div class="nav-links">
+   <a href="../index.html#about" data-pt="Sobre" style="color:var(--color-text);font-size:14px;font-weight:600;letter-spacing:.01em">About</a>
+   <a href="../index.html#interests" data-pt="Interesses" style="color:var(--color-text);font-size:14px;font-weight:600">Interests</a>
+   <a href="../index.html#resume" data-pt="Currículo" style="color:var(--color-text);font-size:14px;font-weight:600">Resume</a>
+   <a href="../index.html#projects" style="color:var(--color-accent);font-size:14px;font-weight:600" data-pt="Projetos">Projects</a>
+   <a href="../index.html#resources" data-pt="Recursos" style="color:var(--color-text);font-size:14px;font-weight:600">Resources</a>
+   <a href="../index.html#contact" data-pt="Contato" style="color:var(--color-text);font-size:14px;font-weight:600">Contact</a>
+   <div style="display:inline-flex;border:1px solid var(--color-divider)">
+    <button data-lang="en" style="background:none;border:0;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:12px;color:var(--color-text);padding:7px 11px">EN</button>
+    <button data-lang="pt" style="background:none;border:0;cursor:pointer;font-family:var(--font-heading);font-weight:800;font-size:12px;color:var(--color-text);padding:7px 11px;border-left:1px solid var(--color-divider)">PT</button>
+   </div>
+  </div>
+  <button class="nav-toggle" data-menu-toggle aria-label="Menu" aria-expanded="false">
+   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+  </button>
+ </div>
+</nav>
+
+<header class="proj-pad">
+ <div class="container">
+  <a class="crumb" href="../index.html#projects" data-pt="← Projetos">← Projects</a>
+  <div class="hero-grid">
+   <div>
+    <div data-reveal style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px">
+     <span class="tag tag-accent" style="font-weight:600" data-pt="Notas">Notes</span>
+     <span class="tag" style="border:1px solid var(--color-divider);color:var(--muted)">COURSE · 2022</span>
+    </div>
+    <h1 data-reveal style="font-size:60px;line-height:1;letter-spacing:-.03em;margin:0 0 20px">Statistical<br>Mechanics</h1>
+    <p data-reveal style="font-size:19px;line-height:1.5;max-width:34ch;color:var(--color-text);margin:0 0 18px" data-pt="Um curso de Mecânica Estatística.">A Statistical Mechanics course.</p>
+    <p data-reveal style="font-size:15px;line-height:1.65;max-width:46ch;color:var(--muted);margin:0 0 34px" data-pt="As listas de exercícios resolvidas do curso de Mecânica Estatística de Silvio Salinas, ministrado em 2022.2. As listas estão em português.">The solved exercise lists from Silvio Salinas' Statistical Mechanics course, taught in 2022.2. The lists are written in Portuguese.</p>
+    <div data-reveal style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+     <a class="btn btn-primary" href="../assets/files/Listas_MecStat_Salinas.rar" style="padding:12px 18px;gap:8px" data-pt="Baixar listas (.rar)">Download lists (.rar)
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 4v12M7 12l5 5 5-5M5 20h14"/></svg></a>
+    </div>
+   </div>
+   <div data-reveal style="position:relative;justify-self:center">
+    <div style="position:absolute;inset:0;transform:translate(18px,18px);border:2px solid var(--color-accent);z-index:0"></div>
+    <div style="position:relative;z-index:1;width:min(400px,80vw);aspect-ratio:16/10;overflow:hidden;background:var(--color-surface)">
+     <img data-hide-on-error class="grayscale" src="../assets/img/statistical-mechanics.png" alt="Statistical Mechanics cover" style="width:100%;height:100%;object-fit:cover">
+     <div style="position:absolute;inset:0;background:var(--color-accent);mix-blend-mode:soft-light;opacity:.4"></div>
+     <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,15,12,.7))"></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</header>
+
+<section class="section section-pad">
+ <div class="container">
+  <div style="display:flex;align-items:center;gap:22px;margin:0 0 48px">
+   <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.16em;color:var(--color-accent)"><span data-pt="O PROJETO">THE PROJECT</span></span>
+   <span style="flex:1;height:2px;background:var(--color-divider)"></span>
+  </div>
+  <div class="about-grid">
+   <div data-reveal>
+    <h3 style="font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 24px" data-pt="Arquivos">Files</h3>
+    <a href="../assets/files/Listas_MecStat_Salinas.rar" style="display:block;border:1px solid var(--color-divider);background:var(--color-surface);padding:28px;color:var(--color-text);transition:border-color .3s" onmouseover="this.style.borderColor='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-divider)'">
+     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+      <div>
+       <span class="tag tag-accent" style="font-weight:600">IF-USP</span>
+       <h4 style="font-size:19px;margin:14px 0 6px" data-pt="Listas resolvidas - Salinas">Solved exercise lists - Salinas</h4>
+       <p style="font-size:13px;color:var(--muted);margin:0" data-pt="As listas de exercícios resolvidas do curso, em português. Arquivo .rar, 4,3 MB.">The course's solved exercise lists, in Portuguese. A .rar archive, 4.3 MB.</p>
+      </div>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M12 4v12M7 12l5 5 5-5M5 20h14"/></svg>
+     </div>
+    </a>
+   </div>
+   <div data-reveal>
+    <h3 style="font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 24px" data-pt="Informações">Project information</h3>
+    <div style="border:1px solid var(--color-divider);background:var(--color-surface)">
+     <div class="info-row">
+      <div class="info-key" data-pt="Categoria">Category</div>
+      <div class="info-val" data-pt="Curso de Física">Physics Course</div>
+     </div>
+     <div class="info-row">
+      <div class="info-key" data-pt="Data">Project date</div>
+      <div class="info-val" data-pt="Segundo semestre de 2022">Last half of 2022</div>
+     </div>
+     <div class="info-row">
+      <div class="info-key" data-pt="Idioma">Language</div>
+      <div class="info-val" data-pt="Português">Portuguese</div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<footer style="border-top:2px solid var(--color-divider)">
+ <div class="container" style="padding:36px 0;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+  <div style="display:flex;align-items:center;gap:11px">
+   <span style="width:14px;height:14px;background:var(--color-accent);display:inline-block"></span>
+   <span style="font-family:var(--font-heading);font-weight:800;font-size:15px">Bruno Gehlen</span>
+   <span style="font-size:13px;color:var(--muted);margin-left:8px">© 2026</span>
+  </div>
+  <a href="../index.html#projects" style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:7px" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--muted)'" data-pt="Todos os projetos →">All projects →</a>
+ </div>
+</footer>
+
+</div>
+
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>

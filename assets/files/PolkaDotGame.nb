@@ -1,0 +1,433 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15476,        425]
+NotebookOptionsPosition[     14221,        394]
+NotebookOutlinePosition[     14642,        411]
+CellTagsIndexPosition[     14599,        408]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[StyleBox["Jogo no Mathematica (Polka Dot)",
+ FontWeight->"Bold",
+ FontSlant->"Italic",
+ FontVariations->{"Underline"->True}]], "Title",
+ CellChangeTimes->{{3.909411858498329*^9, 3.909411891639267*^9}, {
+  3.909425213918646*^9, 3.909425223190728*^9}},
+ TextAlignment->Center,ExpressionUUID->"2a4d1dbf-2148-4788-a604-98d4a12d9171"],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["Usaremos principalmente a fun\[CCedilla]\[ATilde]o \
+\[OpenCurlyDoubleQuote]MousePosition[ ]\[CloseCurlyDoubleQuote], que retorna \
+a posi\[CCedilla]\[ATilde]o do mouse (um ponto {x,y}) com rela\[CCedilla]\
+\[ATilde]o a um sistema de coordenadas espec\[IAcute]fico, podendo ser um gr\
+\[AAcute]fico ou a janela inteira, al\[EAcute]m da fun\[CCedilla]\[ATilde]o \
+\[OpenCurlyDoubleQuote]Dynamic[ ]\[CloseCurlyDoubleQuote], para manter o \
+programa interativo. Veja um exemplo abaixo:",
+  FontWeight->"Bold",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.9094118978400707`*^9, 3.909411982736949*^9}, {
+   3.909412024986785*^9, 3.909412030963221*^9}, {3.9094170906704597`*^9, 
+   3.909417093530961*^9}, 3.909419432141798*^9, {3.90942231233395*^9, 
+   3.9094223323819103`*^9}},ExpressionUUID->"1766fb0b-7a98-42e2-8103-\
+8ecae1cafaee"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dynamic", "[", 
+  RowBox[{"MousePosition", "[", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9094107538941593`*^9, 3.909410758722392*^9}, {
+   3.9094223360017433`*^9, 3.909422354921714*^9}, 3.90943082045185*^9},
+ CellLabel->"In[1]:=",ExpressionUUID->"bb8d77be-40dd-49b6-bec9-622e68a43008"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[
+   MousePosition[], StandardForm],
+  ImageSizeCache->{43.2, {3.1171875, 7.3828125}}]], "Output",
+ CellChangeTimes->{3.941186383573708*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"1896dfb1-b5a1-426a-99b1-70479b42e699"]
+}, Open  ]],
+
+Cell[TextData[{
+ "\t",
+ StyleBox["Agora, definimos uma resolu\[CCedilla]\[ATilde]o e elaboramos um \
+\[OpenCurlyDoubleQuote]Graphics[ ]\[CloseCurlyDoubleQuote] din\[AHat]mico ",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ StyleBox["(lembre de rodar o c\[OAcute]digo e esconda clickando x2 na barra \
+lateral direita da c\[EAcute]lula do jogo)",
+  FontWeight->"Bold",
+  FontSlant->"Italic",
+  FontColor->RGBColor[0, 0, 1]],
+ StyleBox[":",
+  FontWeight->"Bold",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.9094120090051613`*^9, 3.909412020413706*^9}, {
+   3.909412193115457*^9, 3.9094121972404327`*^9}, {3.909412792304455*^9, 
+   3.909412801209043*^9}, 3.909417096304571*^9, {3.9094194338022747`*^9, 
+   3.9094194578228683`*^9}, {3.909422374883946*^9, 3.909422376316279*^9}, {
+   3.909424656339674*^9, 3.909424679210744*^9}, {3.909434149315295*^9, 
+   3.90943421042178*^9}},ExpressionUUID->"74ab2730-07a0-4023-a854-\
+e0c4107ae37d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"resol", "=", 
+    RowBox[{"CurrentValue", "[", 
+     RowBox[{
+      RowBox[{"EvaluationNotebook", "[", "]"}], ",", "\"\<WindowSize\>\""}], 
+     "]"}]}], ";"}], 
+  RowBox[{"(*", 
+   RowBox[{"Resolu\[CCedilla]\[ATilde]o", " ", "da", " ", "janela"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Graphics", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{"(*", 
+        RowBox[{"Condicional", ",", " ", 
+         RowBox[{
+          RowBox[{"se", " ", "dentro", " ", "do", " ", "gr\[AAcute]fico"}], 
+          " ", "->", " ", 
+          RowBox[{"Temos", " ", "o", " ", "disco"}]}], ",", " ", 
+         RowBox[{
+          RowBox[{"se", " ", "fora"}], " ", "->", " ", 
+          RowBox[{"Surge", " ", "uma", " ", "mensagem"}]}]}], "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"TrueQ", "[", 
+         RowBox[{
+          RowBox[{"MousePosition", "[", "\"\<Graphics\>\"", "]"}], "==", 
+          "None"}], "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"messageError", "=", 
+         RowBox[{"Text", "[", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{
+             "Framed", "[", 
+              "\"\<Retorne o mouse \[AGrave] regi\[ATilde]o do jogo!\>\"", 
+              "]"}], ",", "White", ",", "Bold", ",", "26"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"resol", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "/", "2"}], ",", 
+             RowBox[{
+              RowBox[{"resol", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], "/", "2"}]}], "}"}]}], "]"}]}],
+         ",", "\[IndentingNewLine]", 
+        RowBox[{"you", "=", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Disk", "[", 
+            RowBox[{
+             RowBox[{"Dynamic", "[", 
+              RowBox[{"MousePosition", "[", "\"\<Graphics\>\"", "]"}], "]"}], 
+             ",", "10"}], "]"}], ",", "White"}], "]"}]}]}], 
+       "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"bolas", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{
+          RowBox[{"Disk", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"RandomInteger", "[", 
+               RowBox[{"{", 
+                RowBox[{"0", ",", "960"}], "}"}], "]"}], ",", 
+              RowBox[{"RandomInteger", "[", 
+               RowBox[{"{", 
+                RowBox[{"0", ",", "516"}], "}"}], "]"}]}], "}"}], ",", 
+            RowBox[{"i", "*", 
+             RowBox[{"RandomInteger", "[", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "6"}], "}"}], "]"}]}]}], "]"}], ",", "Red"}],
+          "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "10"}], "}"}]}], "]"}]}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"you", "[", 
+         RowBox[{"[", 
+          RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}], ">", "200"}], ",", 
+       
+       RowBox[{
+        RowBox[{"you", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "=", "Green"}], ",", 
+       RowBox[{
+        RowBox[{"you", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "=", "Blue"}]}], "]"}], ","}], 
+    "*)"}], "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{"PlotRange", "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"resol", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"resol", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], "}"}]}], "}"}]}],
+    FontColor->RGBColor[1, 0.5, 0]], 
+   StyleBox[",",
+    FontColor->RGBColor[1, 0.5, 0]], 
+   StyleBox[
+    RowBox[{"Background", "->", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0.", ",", "0.19", ",", "0.32"}], "]"}]}],
+    FontColor->RGBColor[1, 0.5, 0]], 
+   StyleBox[",",
+    FontColor->RGBColor[1, 0.5, 0]], 
+   StyleBox[
+    RowBox[{"ImageSize", "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"resol", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{"resol", "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], "}"}]}],
+    FontColor->RGBColor[1, 0.5, 0]], 
+   StyleBox[",",
+    FontColor->RGBColor[1, 0.5, 0]], 
+   StyleBox["\[IndentingNewLine]",
+    FontColor->GrayLevel[0]], 
+   StyleBox[
+    RowBox[{"Frame", "->", "True"}],
+    FontColor->RGBColor[1, 0, 1]], 
+   StyleBox[",",
+    FontColor->RGBColor[1, 0, 1]], 
+   StyleBox[
+    RowBox[{"FrameStyle", "->", 
+     RowBox[{"Directive", "[", 
+      RowBox[{"White", ",", "Thick"}], "]"}]}],
+    FontColor->RGBColor[1, 0, 1]], 
+   StyleBox[",",
+    FontColor->RGBColor[1, 0, 1]], 
+   StyleBox[
+    RowBox[{"FrameTicks", "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"None", ",", "None"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"None", ",", "None"}], "}"}]}], "}"}]}],
+    FontColor->RGBColor[1, 0, 1]], 
+   StyleBox[",",
+    FontColor->RGBColor[1, 0, 1]], 
+   StyleBox["\[IndentingNewLine]",
+    FontColor->RGBColor[1, 0, 1]], 
+   StyleBox[
+    RowBox[{"FrameLabel", "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"None", ",", "None"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<By Bruno Gehlen\>\"", ",", 
+         "\"\<Polka Dot Game\\n(Wolfram Version)\>\""}], "}"}]}], "}"}]}],
+    FontColor->RGBColor[1, 0, 1]], 
+   StyleBox[",",
+    FontColor->RGBColor[1, 0, 1]], 
+   StyleBox[
+    RowBox[{"LabelStyle", "->", 
+     RowBox[{"Directive", "[", 
+      RowBox[{"White", ",", "Bold", ",", "12"}], "]"}]}],
+    FontColor->RGBColor[1, 0, 1]], 
+   StyleBox[",",
+    FontColor->RGBColor[1, 0, 1]], 
+   StyleBox["\[IndentingNewLine]",
+    FontColor->GrayLevel[0]], 
+   StyleBox[
+    RowBox[{"GridLines", "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{"i", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "0", ",", 
+           RowBox[{"resol", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], ",", "40"}], "}"}]}], "]"}], ",", 
+       
+       RowBox[{"Table", "[", 
+        RowBox[{"i", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "0", ",", 
+           RowBox[{"resol", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], ",", "40"}], "}"}]}], "]"}]}], 
+      "}"}]}],
+    FontColor->RGBColor[0, 0, 1]], 
+   StyleBox[",",
+    FontColor->RGBColor[0, 0, 1]], 
+   StyleBox[
+    RowBox[{"GridLinesStyle", "->", 
+     RowBox[{"Directive", "[", 
+      RowBox[{"Dashed", ",", " ", "White"}], "]"}]}],
+    FontColor->RGBColor[0, 0, 1]]}], 
+  StyleBox["\[IndentingNewLine]",
+   FontColor->RGBColor[0.6, 0.4, 0.2]], "]"}]}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwdz3lIE3AUB3ATUadkQmJqhSYpEWOpaYaRZ9g8mlN0OrK1zTyyOVc6cmEp
+prYlTMw8Kos1rcwirLyPTa05t8QGmgUqxaimE+0yybRj398fjw/vC98Hbxc/
+PynT2srK6qBlYJf89Ne7XksR9pebf8OBTY3/IN3400FpcWw53RWaQ6TeUDwf
+4w8/zEYFQG536SEYkicOh4H8Lccg/2hHAqQ7ZLPgqKKWePvUFS40nivMIveD
+nAugX5crUZI2VQK9d4ilsMecUg+7aj42wVeZshaSmwIewNa8W88htXaD6Mid
+6Yc33R+pYeL5Gxqoyn08BwO8Ljk0W2Q62TnC8frR3TDbI90H6p/174Or46z9
+8HurX2CLxdg8SRg0uOliYZpIzobvega5MHdbagbcs/4+B7pttRFCY4HqAumr
+3lQSw3yr4DRbQKTp6NfhbPzSQ6itdm+HTi6eT6H621onrOBIu4mUYjVUMK4O
+wRjTvAb+feGkhdaJJj08ua5/DSszGTPECtEnGP821e4e/i/V2UOBzOAMn8RF
+ukAvQdlOaNpc5wmjNTwq/GNTdRiO+SzHwy+6I0wojJrgQJr1gQw4NRJaBHt5
+x8vJPsyphnE5xXXQ7L46DpN76UYY2sn+DPcWLpqhpmlwBa5Er/2CA3W2lPsW
+bdOKPGCYUekLOckSf9inFAfBjrNyYhtVFAL9fkwS+wwp4aRfy0uCjdkLLDgk
+dGbDUqqCC8+0rRfBCdeCElielVAGW/ll7ZC2QOmBF9UNA1BvjFTBXm7/CNwY
+lmjhy/xFA7zDE0/DFe3cDGQGT85ChkhWE3xiKYK1PeMa/A/ZXL0M
+  "],ExpressionUUID->"7e29e8d7-2e30-49a7-b9c6-def572c6eba9"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   DynamicBox[Typeset`ToBoxes[
+     If[
+      TrueQ[MousePosition["Graphics"] == None], $CellContext`messageError = 
+      Text[
+        Style[
+         Framed["Retorne o mouse \[AGrave] regi\[ATilde]o do jogo!"], White, 
+         Bold, 26], {
+        Part[$CellContext`resol, 1]/2, Part[$CellContext`resol, 2]/
+         2}], $CellContext`you = Style[
+        Disk[
+         Dynamic[
+          MousePosition["Graphics"]], 10], White]], StandardForm, Graphics],
+    ImageSizeCache->{{147.07734375, 455.82265624999997`}, {-9.906542968750028,
+      16.51494140624997}}], {
+    {RGBColor[1, 0, 0], DiskBox[{565, 416}, 5]}, 
+    {RGBColor[1, 0, 0], DiskBox[{860, 488}, 4]}, 
+    {RGBColor[1, 0, 0], DiskBox[{167, 190}, 9]}, 
+    {RGBColor[1, 0, 0], DiskBox[{352, 203}, 4]}, 
+    {RGBColor[1, 0, 0], DiskBox[{434, 38}, 30]}, 
+    {RGBColor[1, 0, 0], DiskBox[{746, 374}, 0]}, 
+    {RGBColor[1, 0, 0], DiskBox[{861, 515}, 35]}, 
+    {RGBColor[1, 0, 0], DiskBox[{129, 9}, 48]}, 
+    {RGBColor[1, 0, 0], DiskBox[{692, 162}, 36]}, 
+    {RGBColor[1, 0, 0], DiskBox[{809, 303}, 60]}}},
+  Background->RGBColor[0., 0.19, 0.32],
+  Frame->True,
+  FrameLabel->{{None, None}, {
+     FormBox["\"By Bruno Gehlen\"", TraditionalForm], 
+     FormBox["\"Polka Dot Game\\n(Wolfram Version)\"", TraditionalForm]}},
+  FrameStyle->Directive[
+    GrayLevel[1], 
+    Thickness[Large]],
+  FrameTicks->{{None, None}, {None, None}},
+  GridLines->{{0, 40, 80, 120, 160, 200, 240, 280, 320, 360, 400, 440, 480, 
+    520, 560, 600, 640, 680, 720, 760, 800, 840, 880, 920, 960, 1000}, {0, 40,
+     80, 120, 160, 200, 240, 280, 320, 360, 400, 440, 480, 520}},
+  GridLinesStyle->Directive[
+    Dashing[{Small, Small}], 
+    GrayLevel[1]],
+  ImageSize->{1006.5, 534},
+  LabelStyle->Directive[
+    GrayLevel[1], Bold, 12],
+  PlotRange->{{0, 1006.5}, {0, 534}}]], "Output",
+ CellChangeTimes->{
+  3.909432892792658*^9, {3.909433055988995*^9, 3.909433065561013*^9}, {
+   3.9094341615772953`*^9, 3.909434171381074*^9}, 3.909437104939576*^9, 
+   3.941186416630169*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"b376ad88-9c80-40f2-962c-742f9f1b22f1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"you", "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "2"}], "]"}], "]"}], ",", 
+   RowBox[{"bolas", "[", 
+    RowBox[{"[", 
+     RowBox[{"9", ",", "1", ",", "2"}], "]"}], "]"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.90943197750918*^9, 3.909431986729912*^9}, {
+  3.909432052466794*^9, 3.909432052664925*^9}, {3.909432642765718*^9, 
+  3.90943266025863*^9}},
+ CellLabel->
+  "In[167]:=",ExpressionUUID->"f0e8af95-a326-47a1-8497-c37a29868115"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"10", ",", "54"}], "}"}]], "Output",
+ CellChangeTimes->{{3.909432650178644*^9, 3.9094326605699987`*^9}},
+ CellLabel->
+  "Out[167]=",ExpressionUUID->"389b713c-bb01-4029-9d2e-87ee4c3e878c"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1006.5, 534},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>0.6 Inherited,
+FrontEndVersion->"14.1 for Linux x86 (64-bit) (July 16, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"53b4dfa3-5571-41f6-a96a-f30900621991"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 343, 6, 57, "Title",ExpressionUUID->"2a4d1dbf-2148-4788-a604-98d4a12d9171"],
+Cell[926, 30, 875, 16, 33, "Text",ExpressionUUID->"1766fb0b-7a98-42e2-8103-8ecae1cafaee"],
+Cell[CellGroupData[{
+Cell[1826, 50, 314, 5, 27, "Input",ExpressionUUID->"bb8d77be-40dd-49b6-bec9-622e68a43008"],
+Cell[2143, 57, 251, 5, 22, "Output",ExpressionUUID->"1896dfb1-b5a1-426a-99b1-70479b42e699"]
+}, Open  ]],
+Cell[2409, 65, 945, 21, 21, "Text",ExpressionUUID->"74ab2730-07a0-4023-a854-e0c4107ae37d"],
+Cell[CellGroupData[{
+Cell[3379, 90, 7923, 224, 337, "Input",ExpressionUUID->"7e29e8d7-2e30-49a7-b9c6-def572c6eba9"],
+Cell[11305, 316, 2129, 49, 330, "Output",ExpressionUUID->"b376ad88-9c80-40f2-962c-742f9f1b22f1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13471, 370, 493, 13, 19, "Input",ExpressionUUID->"f0e8af95-a326-47a1-8497-c37a29868115"],
+Cell[13967, 385, 226, 5, 22, "Output",ExpressionUUID->"389b713c-bb01-4029-9d2e-87ee4c3e878c"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

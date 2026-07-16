@@ -1,0 +1,105 @@
+/* Page theme - overrides the Modernist tokens in styles.css to a dark green ground.
+   Loaded after styles.css so these :root values win. */
+:root{
+  --color-bg:#0a0f0c; --color-surface:#121a15; --color-text:#e7ede8;
+  /* The ramp steps below are derived from #3ecf8e, while the base accent is #4ade80 -
+     they disagree by design, matching what the source canvas renders. The hero SVG
+     stroke and the map marker are likewise hardcoded to #3ecf8e. */
+  --color-accent:#4ade80; --color-accent-600:#2fb877; --color-accent-700:#1f8f5b;
+  --color-divider:rgba(231,237,232,.13);
+  --color-accent-100:rgba(62,207,142,.13); --color-accent-800:#8fe8be;
+  --muted:color-mix(in srgb,var(--color-text) 56%,transparent);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.5); --shadow-md:0 8px 26px rgba(0,0,0,.45); --shadow-lg:0 22px 60px rgba(0,0,0,.55);
+}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-bg);color:var(--color-text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--color-accent);text-decoration:none}
+/* Buttons are excluded: .btn variants set their own label colour, and a bare
+   a:hover (0-1-1) outranks .btn-primary's colour (0-1-0). It would repaint the
+   label to --color-accent-600 - exactly what .btn-primary:hover paints the
+   background - leaving the label invisible against its own button. */
+a:not(.btn):hover{color:var(--color-accent-600)}
+::selection{background:rgba(62,207,142,.28)}
+.container{width:100%;max-width:1160px;margin:0 auto;padding:0 36px}
+.section{scroll-margin-top:82px;border-top:2px solid var(--color-divider)}
+.section-pad{padding:108px 0}
+.hero-pad{padding:126px 0 92px}
+.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:60px;align-items:center}
+.about-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:64px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.int-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--color-divider);border:1px solid var(--color-divider)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--color-divider);border:1px solid var(--color-divider)}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;color:var(--color-text);width:40px;height:40px;align-items:center;justify-content:center}
+@media(max-width:920px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .two-col{grid-template-columns:1fr;gap:40px}
+  .res-grid{grid-template-columns:1fr;gap:36px}
+}
+@media(max-width:760px){
+  .container{padding:0 22px}
+  .section-pad{padding:68px 0}
+  .hero-pad{padding:104px 0 64px}
+  .int-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .nav-links{position:fixed;top:0;right:0;height:100vh;width:min(80vw,320px);flex-direction:column;align-items:flex-start;justify-content:center;gap:26px;background:var(--color-surface);border-left:2px solid var(--color-divider);transform:translateX(105%);transition:transform .42s cubic-bezier(.2,.7,.2,1);padding:44px;z-index:70;box-shadow:var(--shadow-lg)}
+  .nav-links.open{transform:translateX(0)}
+  .nav-toggle{display:inline-flex}
+  h1.hero-name{font-size:52px !important}
+}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes rot{to{transform:rotate(360deg)}}
+
+/* Scroll reveal. The hidden state is gated on .js so that with scripting off
+   the content stays visible rather than stranded at opacity 0. */
+.js [data-reveal]{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);
+}
+.js [data-reveal].is-visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js [data-reveal]{opacity:1;transform:none;transition:none}
+  [data-geo] svg{animation:none}
+}
+
+/* A project cover that fails to load collapses to the tinted surface
+   behind it instead of showing a broken-image glyph. */
+[data-proj] img[data-cover]{width:100%;height:100%;object-fit:cover}
+
+/* — GitHub activity —
+   Stat tiles borrow .int-grid's construction: cells on the page ground with the
+   divider showing through 2px gaps. The repo rows borrow the Resources list. */
+.gh-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--color-divider);border:1px solid var(--color-divider)}
+.gh-stat{background:var(--color-bg);padding:18px 20px}
+.gh-stat-num{font-family:var(--font-heading);font-weight:800;font-size:26px;line-height:1;letter-spacing:-.02em}
+.gh-stat-key{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.gh-repos{display:flex;flex-direction:column}
+.gh-repo{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--color-divider);color:var(--color-text)}
+.gh-repo:last-child{border-bottom:1px solid var(--color-divider)}
+.gh-repo:hover .gh-repo-name{color:var(--color-accent)}
+.gh-rank{font-size:12px;font-weight:800;color:var(--color-accent);width:20px;flex:none}
+.gh-repo-name{display:block;font-size:15px;font-weight:600;color:var(--color-text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gh-repo-desc{display:block;font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gh-repo-meta{font-size:11px;color:var(--muted);letter-spacing:.04em;flex:none;white-space:nowrap}
+@media(max-width:520px){.gh-repo-meta{display:none}}
+
+/* — project detail pages — */
+.proj-pad{padding:72px 0 84px}
+.crumb{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:28px}
+.crumb:hover{color:var(--color-accent)}
+/* The LaTeX screenshots are portrait; three across on desktop, stacked on mobile,
+   separated by the divider showing through the 2px gaps. */
+.shot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--color-divider);border:1px solid var(--color-divider)}
+.shot-grid img{width:100%;height:auto;display:block;background:var(--color-surface)}
+.info-row{padding:22px 24px;border-bottom:1px solid var(--color-divider)}
+.info-row:last-child{border-bottom:0}
+.info-key{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px}
+.info-val{font-size:16px;font-weight:600}
+@media(max-width:760px){
+  .proj-pad{padding:52px 0 64px}
+  .shot-grid{grid-template-columns:1fr}
+}
