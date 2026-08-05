@@ -51,18 +51,109 @@
   });
   setFilter('all');
 
-  /* - mobile menu - */
+  /* - mobile menu -
+     The shell and scrim are built here rather than in the markup so all four
+     pages get them from this one script.
+
+     The shell is what keeps the closed panel from widening the document. The
+     panel parks itself off the right edge, and a viewport-level overflow-x -
+     on <body> or on <html>, hidden or clip - does not reliably stop mobile
+     browsers from panning out to it. The shell is a viewport-sized box with
+     overflow:hidden, so the parked panel is clipped by something that cannot
+     itself exceed the viewport. On desktop the shell is display:contents, so
+     the panel stays a flex item of .container exactly as before.
+
+     The scrim goes inside the <nav>: the nav's backdrop-filter makes it a
+     stacking context, so a scrim appended to <body> would paint above the
+     whole nav subtree - panel included - instead of behind the panel. */
   var menu = root.querySelector('.nav-links');
   var toggle = root.querySelector('[data-menu-toggle]');
   if (toggle && menu) {
-    toggle.addEventListener('click', function () {
-      var open = menu.classList.toggle('open');
+    var shell = document.createElement('div');
+    shell.className = 'nav-shell';
+    menu.parentNode.insertBefore(shell, menu);
+    shell.appendChild(menu);
+
+    var scrim = document.createElement('div');
+    scrim.className = 'nav-scrim';
+    /* Appended to the <nav> itself, not to the flex .container that holds the
+       panel - a fixed box is out of flow either way, but this keeps it from
+       showing up as a flex item. */
+    (shell.closest('nav') || shell.parentNode).appendChild(scrim);
+
+    var setMenu = function (open) {
+      menu.classList.toggle('open', open);
+      scrim.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', String(open));
+    };
+    toggle.addEventListener('click', function () {
+      setMenu(!menu.classList.contains('open'));
+    });
+    /* Tapping anywhere off the panel dismisses it. The scrim swallows the tap,
+       so a link behind the panel is not activated on the way out. */
+    scrim.addEventListener('click', function () { setMenu(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('open')) setMenu(false);
     });
     menu.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        menu.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+      a.addEventListener('click', function () { setMenu(false); });
+    });
+  }
+
+  /* - image lightbox -
+     Any [data-zoom] image opens full-screen on tap. One overlay is built and
+     reused for all of them; pages with no such image build nothing. */
+  var zoomable = root.querySelectorAll('[data-zoom]');
+  if (zoomable.length) {
+    var lb = document.createElement('div');
+    lb.className = 'lb';
+    lb.setAttribute('role', 'dialog');
+    lb.setAttribute('aria-modal', 'true');
+
+    /* No close button - a tap anywhere off the image dismisses. The overlay
+       itself takes focus instead, so Escape reaches it and focus does not
+       linger on the page behind. */
+    lb.tabIndex = -1;
+
+    var lbImg = document.createElement('img');
+    lb.appendChild(lbImg);
+    /* Appended to <body>, outside #root, so it clears the sticky nav's z-index. */
+    document.body.appendChild(lb);
+
+    var lbReturn = null;
+    var openLightbox = function (img) {
+      lbReturn = img;
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || '';
+      lb.setAttribute('aria-label', img.alt || 'Image');
+      lb.classList.add('open');
+      /* Scroll lock, with the vanished scrollbar's width paid back as padding
+         so the page behind does not shift sideways as the overlay opens. */
+      var bar = window.innerWidth - document.documentElement.clientWidth;
+      if (bar > 0) document.documentElement.style.paddingRight = bar + 'px';
+      document.documentElement.style.overflow = 'hidden';
+      lb.focus();
+    };
+    var closeLightbox = function () {
+      lb.classList.remove('open');
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.paddingRight = '';
+      if (lbReturn) lbReturn.focus();
+    };
+
+    /* With no close button, a tap anywhere - image included - dismisses, so
+       there is no dead zone on a phone where the image nearly fills the screen. */
+    lb.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+    });
+
+    zoomable.forEach(function (img) {
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.addEventListener('click', function () { openLightbox(img); });
+      img.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(img); }
       });
     });
   }

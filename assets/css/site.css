@@ -1,23 +1,14 @@
-/* Page theme - overrides the Modernist tokens in styles.css to a dark green ground.
-   Loaded after styles.css so these :root values win. */
 :root{
   --color-bg:#0a0f0c; --color-surface:#121a15; --color-text:#e7ede8;
-  /* The ramp steps below are derived from #3ecf8e, while the base accent is #4ade80 -
-     they disagree by design, matching what the source canvas renders. The hero SVG
-     stroke and the map marker are likewise hardcoded to #3ecf8e. */
   --color-accent:#4ade80; --color-accent-600:#2fb877; --color-accent-700:#1f8f5b;
   --color-divider:rgba(231,237,232,.13);
   --color-accent-100:rgba(62,207,142,.13); --color-accent-800:#8fe8be;
   --muted:color-mix(in srgb,var(--color-text) 56%,transparent);
   --shadow-sm:0 1px 2px rgba(0,0,0,.5); --shadow-md:0 8px 26px rgba(0,0,0,.45); --shadow-lg:0 22px 60px rgba(0,0,0,.55);
 }
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--color-bg);color:var(--color-text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip}
+body{margin:0;background:var(--color-bg);color:var(--color-text);-webkit-font-smoothing:antialiased}
 a{color:var(--color-accent);text-decoration:none}
-/* Buttons are excluded: .btn variants set their own label colour, and a bare
-   a:hover (0-1-1) outranks .btn-primary's colour (0-1-0). It would repaint the
-   label to --color-accent-600 - exactly what .btn-primary:hover paints the
-   background - leaving the label invisible against its own button. */
 a:not(.btn):hover{color:var(--color-accent-600)}
 ::selection{background:rgba(62,207,142,.28)}
 .container{width:100%;max-width:1160px;margin:0 auto;padding:0 36px}
@@ -33,20 +24,31 @@ a:not(.btn):hover{color:var(--color-accent-600)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--color-divider);border:1px solid var(--color-divider)}
 .nav-links{display:flex;gap:30px;align-items:center}
 .nav-toggle{display:none;background:none;border:0;cursor:pointer;color:var(--color-text);width:40px;height:40px;align-items:center;justify-content:center}
+.nav-shell{display:contents}
+.nav-scrim{display:none}
+
 @media(max-width:920px){
   .hero-grid{grid-template-columns:1fr;gap:44px}
   .about-grid{grid-template-columns:1fr;gap:40px}
   .two-col{grid-template-columns:1fr;gap:40px}
   .res-grid{grid-template-columns:1fr;gap:36px}
 }
+
 @media(max-width:760px){
+  .footer{margin:0px 20px 0px 20px}
   .container{padding:0 22px}
   .section-pad{padding:68px 0}
   .hero-pad{padding:104px 0 64px}
   .int-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
-  .nav-links{position:fixed;top:0;right:0;height:100vh;width:min(80vw,320px);flex-direction:column;align-items:flex-start;justify-content:center;gap:26px;background:var(--color-surface);border-left:2px solid var(--color-divider);transform:translateX(105%);transition:transform .42s cubic-bezier(.2,.7,.2,1);padding:44px;z-index:70;box-shadow:var(--shadow-lg)}
-  .nav-links.open{transform:translateX(0)}
+  .nav-shell{display:block;position:fixed;top:0;left:0;width:100%;height:100vh;overflow:hidden;pointer-events:none;z-index:70}
+  .nav-links{display:none}
+  .nav-shell>.nav-links{display:flex;position:absolute;top:0;right:0;height:100%;width:min(80vw,320px);flex-direction:column;align-items:flex-start;justify-content:center;gap:26px;background:var(--color-surface);border-left:2px solid var(--color-divider);transform:translateX(105%);visibility:hidden;pointer-events:none;transition:transform .42s cubic-bezier(.2,.7,.2,1),visibility 0s linear .42s;padding:44px;box-shadow:var(--shadow-lg)}
+  .nav-shell>.nav-links.open{transform:translateX(0);visibility:visible;pointer-events:auto;transition:transform .42s cubic-bezier(.2,.7,.2,1),visibility 0s}
+  /* width:100% of the nav, not 100vw - 100vw counts the classic scrollbar and
+     would itself overhang the right edge by the scrollbar's width. */
+  .nav-scrim{display:block;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,.55);z-index:65;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .42s cubic-bezier(.2,.7,.2,1),visibility 0s linear .42s}
+  .nav-scrim.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .42s cubic-bezier(.2,.7,.2,1),visibility 0s}
   .nav-toggle{display:inline-flex}
   h1.hero-name{font-size:52px !important}
 }
@@ -70,9 +72,7 @@ a:not(.btn):hover{color:var(--color-accent-600)}
    behind it instead of showing a broken-image glyph. */
 [data-proj] img[data-cover]{width:100%;height:100%;object-fit:cover}
 
-/* — GitHub activity —
-   Stat tiles borrow .int-grid's construction: cells on the page ground with the
-   divider showing through 2px gaps. The repo rows borrow the Resources list. */
+/* -- GitHub activity -- */
 .gh-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--color-divider);border:1px solid var(--color-divider)}
 .gh-stat{background:var(--color-bg);padding:18px 20px}
 .gh-stat-num{font-family:var(--font-heading);font-weight:800;font-size:26px;line-height:1;letter-spacing:-.02em}
@@ -87,7 +87,23 @@ a:not(.btn):hover{color:var(--color-accent-600)}
 .gh-repo-meta{font-size:11px;color:var(--muted);letter-spacing:.04em;flex:none;white-space:nowrap}
 @media(max-width:520px){.gh-repo-meta{display:none}}
 
-/* — project detail pages — */
+/* -- image lightbox -- */
+[data-zoom]{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.88);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s cubic-bezier(.2,.7,.2,1),visibility 0s linear .3s}
+.lb.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .3s cubic-bezier(.2,.7,.2,1),visibility 0s}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;border:1px solid var(--color-divider);background:var(--color-surface);transform:scale(.97);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.lb.open img{transform:none}
+/* The overlay only takes focus to receive Escape - it is not an interactive
+   control, so it should not draw a focus ring. */
+.lb:focus{outline:none}
+.lb img{cursor:zoom-out}
+@media(max-width:760px){.lb{padding:14px}}
+@media(prefers-reduced-motion:reduce){
+  .lb,.lb img{transition:none}
+  .lb img{transform:none}
+}
+
+/* -- project detail pages -- */
 .proj-pad{padding:72px 0 84px}
 .crumb{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:28px}
 .crumb:hover{color:var(--color-accent)}
